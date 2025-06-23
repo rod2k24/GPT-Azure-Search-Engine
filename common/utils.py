@@ -459,7 +459,7 @@ def create_docsearch_agent(
                                               reranker_th=reranker_th, 
                                               sas_token=sas_token)
 
-    docsearch_agent = create_react_agent(llm, tools=[docsearch_tool], state_modifier=prompt)
+    docsearch_agent = create_react_agent(llm, tools=[docsearch_tool], prompt=prompt)
     
     return docsearch_agent
     
@@ -468,7 +468,7 @@ def create_csvsearch_agent(
         llm:AzureChatOpenAI,
         prompt:str,
     ):
-    csvsearch_agent = create_react_agent(llm,tools=[PythonAstREPLTool()], state_modifier=prompt)
+    csvsearch_agent = create_react_agent(llm,tools=[PythonAstREPLTool()], prompt=prompt)
     
     return csvsearch_agent  
  
@@ -496,7 +496,7 @@ def create_sqlsearch_agent(
     
     sqlsearch_agent = create_react_agent(llm, 
                                      tools=toolkit.get_tools(), 
-                                     state_modifier=prompt)
+                                     prompt=prompt)
     
     return sqlsearch_agent  
 
@@ -532,7 +532,7 @@ def create_websearch_agent(
     
     websearch_agent = create_react_agent(llm, 
                                      tools=[bing_tool, web_fetch_tool], 
-                                     state_modifier=prompt)
+                                     prompt=prompt)
     
     return websearch_agent
 
@@ -547,6 +547,6 @@ def create_apisearch_agent(
     
     apisearch_agent = create_react_agent(llm, 
                                      tools=toolkit.get_tools(), 
-                                     state_modifier=prompt)
+                                     prompt=prompt)
     
     return apisearch_agent 
